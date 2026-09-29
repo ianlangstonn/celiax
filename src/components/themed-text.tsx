@@ -34,27 +34,27 @@ const styles = StyleSheet.create({
   small: {
     fontSize: 14,
     lineHeight: 20,
-    fontWeight: 500,
+    fontWeight: 600,
   },
   smallBold: {
     fontSize: 14,
     lineHeight: 20,
-    fontWeight: 700,
+    fontWeight: 800,
   },
   default: {
     fontSize: 16,
     lineHeight: 24,
-    fontWeight: 500,
+    fontWeight: 600,
   },
   title: {
     fontSize: 48,
-    fontWeight: 600,
-    lineHeight: 52,
+    fontWeight: 900,
+    lineHeight: 54,
   },
   subtitle: {
     fontSize: 32,
     lineHeight: 44,
-    fontWeight: 600,
+    fontWeight: 800,
   },
   link: {
     lineHeight: 30,

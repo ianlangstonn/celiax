@@ -3,9 +3,11 @@ import { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { ProductResult } from '@/components/product-result';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { BottomTabInset, Spacing } from '@/constants/theme';
+import { useProductLookup } from '@/hooks/use-product-lookup';
 
 // The barcode formats printed on grocery products in the US.
 const PRODUCT_BARCODES = ['upc_a', 'upc_e', 'ean13', 'ean8'] as const;
@@ -13,6 +15,7 @@ const PRODUCT_BARCODES = ['upc_a', 'upc_e', 'ean13', 'ean8'] as const;
 export default function ScanScreen() {
   const [permission, requestPermission] = useCameraPermissions();
   const [scannedCode, setScannedCode] = useState<string | null>(null);
+  const lookup = useProductLookup(scannedCode);
 
   // Permission status is still loading.
   if (!permission) {
@@ -58,13 +61,7 @@ export default function ScanScreen() {
 
       <SafeAreaView style={styles.overlay} pointerEvents="box-none">
         {scannedCode ? (
-          <ThemedView type="backgroundElement" style={styles.card}>
-            <ThemedText themeColor="textSecondary">Scanned barcode</ThemedText>
-            <ThemedText type="subtitle">{scannedCode}</ThemedText>
-            <Pressable style={styles.button} onPress={() => setScannedCode(null)}>
-              <ThemedText style={styles.buttonText}>Scan again</ThemedText>
-            </Pressable>
-          </ThemedView>
+          <ProductResult barcode={scannedCode} state={lookup} onScanAgain={() => setScannedCode(null)} />
         ) : (
           <View style={styles.hint}>
             <ThemedText style={styles.hintText}>Point your camera at a barcode</ThemedText>
@@ -94,12 +91,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     padding: Spacing.three,
     paddingBottom: BottomTabInset + Spacing.three,
-  },
-  card: {
-    alignItems: 'center',
-    gap: Spacing.two,
-    padding: Spacing.four,
-    borderRadius: Spacing.four,
   },
   hint: {
     alignSelf: 'center',

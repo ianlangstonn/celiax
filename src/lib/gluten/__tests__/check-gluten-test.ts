@@ -37,6 +37,10 @@ describe('caution ingredients', () => {
     expect(verdictFor('Whole grain rolled oats, sugar')).toBe('caution');
   });
 
+  it('flags oat fiber (found in Quaker Instant Grits)', () => {
+    expect(verdictFor('Degerminated white corn grits, salt, oat fiber')).toBe('caution');
+  });
+
   it('allows gluten-free oats', () => {
     expect(verdictFor('Gluten-free oats, sugar')).toBe('no-gluten-ingredients');
     expect(verdictFor('Certified gluten free rolled oats, honey')).toBe('no-gluten-ingredients');

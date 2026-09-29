@@ -7,20 +7,25 @@ import '@/global.css';
 
 import { Platform } from 'react-native';
 
+// Celiax palette: cream backgrounds, deep green text, sage green accents.
 export const Colors = {
   light: {
-    text: '#000000',
-    background: '#ffffff',
-    backgroundElement: '#F0F0F3',
-    backgroundSelected: '#E0E1E6',
-    textSecondary: '#60646C',
+    text: '#1F3D2B',
+    background: '#F7F2E6',
+    backgroundElement: '#EFE8D8',
+    backgroundSelected: '#E4DCC8',
+    textSecondary: '#5E6B60',
+    tint: '#2F6B47',
+    tintSoft: '#DCE9DF',
   },
   dark: {
-    text: '#ffffff',
-    background: '#000000',
-    backgroundElement: '#212225',
-    backgroundSelected: '#2E3135',
-    textSecondary: '#B0B4BA',
+    text: '#F3EFE4',
+    background: '#111814',
+    backgroundElement: '#1C2620',
+    backgroundSelected: '#26332B',
+    textSecondary: '#A9B5AC',
+    tint: '#4E9A6B',
+    tintSoft: '#22362A',
   },
 } as const;
 
