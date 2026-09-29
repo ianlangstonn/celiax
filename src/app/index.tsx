@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
+import { Wordmark } from '@/components/wordmark';
 import { BottomTabInset, Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
@@ -15,9 +16,7 @@ export default function HomeScreen() {
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.header}>
-          <ThemedText type="title" style={[styles.title, { color: theme.tint }]}>
-            Celiax
-          </ThemedText>
+          <Wordmark fontSize={76} color={theme.tint} />
           <ThemedText type="default" themeColor="textSecondary" style={styles.tagline}>
             Eat with confidence
           </ThemedText>
@@ -66,11 +65,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: Spacing.five,
     gap: Spacing.one,
-  },
-  title: {
-    fontSize: 76,
-    lineHeight: 84,
-    letterSpacing: -1.5,
   },
   tagline: {
     fontSize: 18,
